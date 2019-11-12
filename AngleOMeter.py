@@ -90,6 +90,8 @@ def init():
     kalmanY.setAngle(pitch)
     gyroXAngle = roll;
     gyroYAngle = pitch;
+    compAngleX = roll;
+    compAngleY = pitch;
     return gyroXAngle, gyroYAngle, compAngleX, compAngleY
 
 timer = time.time()
