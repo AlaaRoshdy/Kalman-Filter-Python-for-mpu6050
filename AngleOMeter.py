@@ -93,14 +93,8 @@ compAngleX = roll;
 compAngleY = pitch;
 
 timer = time.time()
-flag = 0
 
 def get_angles():
-	flag = 0
-	if(flag >100): #Problem with the connection
-		print("There is a problem with the connection")
-		flag=0
-		return 
 	try:
 	    #Read Accelerometer raw value
 	    accX = read_raw_data(ACCEL_XOUT_H)
@@ -168,7 +162,7 @@ def get_angles():
 	    print("Angle X: " + str(kalAngleX)+"   " +"Angle Y: " + str(kalAngleY))
 	    #print(str(roll)+"  "+str(gyroXAngle)+"  "+str(compAngleX)+"  "+str(kalAngleX)+"  "+str(pitch)+"  "+str(gyroYAngle)+"  "+str(compAngleY)+"  "+str(kalAngleY))
 	    time.sleep(0.005)
-
+		return kalAngleX, kalAngleY
 	except Exception as exc:
-		flag += 1
-	return kalAngleX, kalAngleY
+		return None
+	
