@@ -96,6 +96,7 @@ timer = time.time()
 
 def get_angles():
     try:
+        timer = time.time()
         #Read Accelerometer raw value
         accX = read_raw_data(ACCEL_XOUT_H)
         accY = read_raw_data(ACCEL_YOUT_H)
