@@ -6,7 +6,7 @@
 #SDA - SDA (3 - Board)
 
 
-from Kalman import KalmanAngle
+from .Kalman import KalmanAngle
 import smbus			#import SMBus module of I2C
 import time
 import math
