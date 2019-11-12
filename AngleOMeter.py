@@ -78,23 +78,23 @@ accZ = read_raw_data(ACCEL_ZOUT_H)
 
 #print(accX,accY,accZ)
 #print(math.sqrt((accY**2)+(accZ**2)))
-if (RestrictPitch):
-    roll = math.atan2(accY,accZ) * radToDeg
-    pitch = math.atan(-accX/math.sqrt((accY**2)+(accZ**2))) * radToDeg
-else:
-    roll = math.atan(accY/math.sqrt((accX**2)+(accZ**2))) * radToDeg
-    pitch = math.atan2(-accX,accZ) * radToDeg
-print(roll)
-kalmanX.setAngle(roll)
-kalmanY.setAngle(pitch)
-gyroXAngle = roll;
-gyroYAngle = pitch;
-compAngleX = roll;
-compAngleY = pitch;
+def init():
+    if (RestrictPitch):
+        roll = math.atan2(accY,accZ) * radToDeg
+        pitch = math.atan(-accX/math.sqrt((accY**2)+(accZ**2))) * radToDeg
+    else:
+        roll = math.atan(accY/math.sqrt((accX**2)+(accZ**2))) * radToDeg
+        pitch = math.atan2(-accX,accZ) * radToDeg
+    print(roll)
+    kalmanX.setAngle(roll)
+    kalmanY.setAngle(pitch)
+    gyroXAngle = roll;
+    gyroYAngle = pitch;
+    return gyroXAngle, gyroYAngle, compAngleX, compAngleY
 
 timer = time.time()
 
-def get_angles():
+def get_angles(gyroXAngle, gyroYAngle, compAngleX, compAngleY):
     try:
         timer = time.time()
         #Read Accelerometer raw value
@@ -163,8 +163,8 @@ def get_angles():
         print("Angle X: " + str(kalAngleX)+"   " +"Angle Y: " + str(kalAngleY))
         #print(str(roll)+"  "+str(gyroXAngle)+"  "+str(compAngleX)+"  "+str(kalAngleX)+"  "+str(pitch)+"  "+str(gyroYAngle)+"  "+str(compAngleY)+"  "+str(kalAngleY))
         time.sleep(0.005)
-        return kalAngleX, kalAngleY
+        return kalAngleX, kalAngleY, gyroXAngle, gyroYAngle, compAngleX, compAngleY
     except Exception as exc:
-        raise exc
+        print(exc)
         return None
     
