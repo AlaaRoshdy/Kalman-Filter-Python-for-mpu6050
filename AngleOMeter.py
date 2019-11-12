@@ -134,9 +134,9 @@ def get_angles(gyroXAngle, gyroYAngle, compAngleX, compAngleY, kalAngleX, kalAng
             else:
                 kalAngleX = kalmanX.getAngle(roll,gyroXRate,dt)
 
-            if(abs(kalAngleX)>90):
-                gyroYRate  = -gyroYRate
-                kalAngleY  = kalmanY.getAngle(pitch,gyroYRate,dt)
+            #if(abs(kalAngleX)>90):
+            gyroYRate  = -gyroYRate
+            kalAngleY  = kalmanY.getAngle(pitch,gyroYRate,dt)
         else:
 
             if((pitch < -90 and kalAngleY >90) or (pitch > 90 and kalAngleY < -90)):
@@ -147,9 +147,9 @@ def get_angles(gyroXAngle, gyroYAngle, compAngleX, compAngleY, kalAngleX, kalAng
             else:
                 kalAngleY = kalmanY.getAngle(pitch,gyroYRate,dt)
 
-            # if(abs(kalAngleY)>90):
-            gyroXRate  = -gyroXRate
-            kalAngleX = kalmanX.getAngle(roll,gyroXRate,dt)
+            if(abs(kalAngleY)>90):
+                gyroXRate  = -gyroXRate
+                kalAngleX = kalmanX.getAngle(roll,gyroXRate,dt)
 
         #angle = (rate of change of angle) * change in time
         gyroXAngle = gyroXRate * dt
