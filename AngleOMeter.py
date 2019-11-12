@@ -92,12 +92,13 @@ def init():
     gyroYAngle = pitch;
     compAngleX = roll;
     compAngleY = pitch;
-    kalAngleY = 0;
-    return gyroXAngle, gyroYAngle, compAngleX, compAngleY, kalAngleY 
+    kalAngleX = 0
+    kalAngleY = 0
+    return gyroXAngle, gyroYAngle, compAngleX, compAngleY, kalAngleX, kalAngleY 
 
 timer = time.time()
 
-def get_angles(gyroXAngle, gyroYAngle, compAngleX, compAngleY, kalAngleY):
+def get_angles(gyroXAngle, gyroYAngle, compAngleX, compAngleY, kalAngleX, kalAngleY):
     try:
         timer = time.time()
         #Read Accelerometer raw value
