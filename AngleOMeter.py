@@ -94,11 +94,12 @@ compAngleY = pitch;
 
 timer = time.time()
 flag = 0
-while True:
+
+def get_angles():
 	if(flag >100): #Problem with the connection
 		print("There is a problem with the connection")
 		flag=0
-		continue
+		return 
 	try:
 	    #Read Accelerometer raw value
 	    accX = read_raw_data(ACCEL_XOUT_H)
@@ -169,3 +170,4 @@ while True:
 
 	except Exception as exc:
 		flag += 1
+return kalAngleX, kalAngleY
