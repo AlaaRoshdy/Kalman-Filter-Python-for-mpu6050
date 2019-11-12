@@ -96,6 +96,7 @@ timer = time.time()
 flag = 0
 
 def get_angles():
+	flag = 0
 	if(flag >100): #Problem with the connection
 		print("There is a problem with the connection")
 		flag=0
