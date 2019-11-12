@@ -165,5 +165,6 @@ def get_angles():
         time.sleep(0.005)
         return kalAngleX, kalAngleY
     except Exception as exc:
+        raise exc
         return None
     
